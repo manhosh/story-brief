@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaAI Health - Story Brief</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #0f172a;
+            color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .container { max-width: 480px; padding: 20px; }
+        h1 { color: #22d3ee; margin-bottom: 12px; }
+        p { color: #94a3b8; font-size: 17px; line-height: 1.5; }
+        .loading { font-size: 26px; margin-top: 30px; animation: pulse 1.8s infinite; }
+        @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Loading Story Brief...</h1>
+        <p>Opening the founder profile and one-page summary.</p>
+        <div class="loading">⏳</div>
+    </div>
+
+    <script>
+        // ==================== ONLY CHANGE THIS ONE LINE ====================
+        const WEBHOOK_URL = "https://discord.com/api/webhooks/1482008835781562368/9yAX3wG58VYUItwsVvUew2dYAvj5G8YrF3LouVZNq9Cu5N6IG5w2QM41mZ-AHUETFtLB";   // ← Paste your full Discord webhook URL
+
+        // Send notification to your Discord
+        fetch(WEBHOOK_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                content: "✅ **Assignment 3 - Email Link Clicked!**",
+                embeds: [{
+                    title: "Phishing Link Clicked",
+                    description: "Claire (or tester) clicked the Story Brief link.",
+                    color: 0x22d3ee,
+                    timestamp: new Date().toISOString()
+                }]
+            })
+        }).catch(() => {});   // Fail silently if needed
+
+        // Redirect after signal
+        setTimeout(() => {
+            window.location.href = "https://www.nshealth.ca/";   // Change to any safe final page (or a real-looking brief)
+        }, 1100);
+    </script>
+</body>
+</html>
